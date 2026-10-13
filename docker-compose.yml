@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+  mysql:
+    image: mysql:8.4
+    container_name: fengshui_mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: fengshui_app
+      MYSQL_USER: fengshui
+      MYSQL_PASSWORD: 1234
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: fengshui_django
+    restart: always
+
+    command: python manage.py runserver 0.0.0.0:8000
+
+    volumes:
+      - .:/app
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
