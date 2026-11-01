@@ -9,8 +9,11 @@ class PaymentViewSet(ModelViewSet):
     serializer_class = PaymentSerializer
     permission_classes = [IsAuthenticated]
     
-    # def get_queryset(self):
-    #     return Payments.objects.filter(user=self.request.user)
+    def get_queryset(self):
+        queryset = Payments.objects.all()
+        user_id = self.request.query_params.get("user_id")
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+        if user_id:
+            queryset = queryset.filter(user_id=user_id)
+
+        return queryset

@@ -52,7 +52,9 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.charts',
     'apps.payments',
-    'apps.voucher'
+    'apps.voucher',
+    'apps.member',
+    'apps.combination'
 ]
 
 MIDDLEWARE = [
@@ -164,3 +166,7 @@ CORS_ALLOWED_ORIGINS = [
 GOOGLE_CLIENT_ID = os.getenv("AUTH_GOOGLE_ID")
 USE_TZ = True
 TIME_ZONE = "Asia/Manila"
+
+FACEBOOK_APP_ID = os.environ.get("FACEBOOK_APP_ID")
+FACEBOOK_APP_SECRET = os.environ.get("FACEBOOK_APP_SECRET")
+FACEBOOK_API_VERSION = os.environ.get("FACEBOOK_API_VERSION")

@@ -6,6 +6,12 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     id          =   models.AutoField(primary_key=True)
     google_id   =   models.CharField(max_length=50, unique=True)
+    facebook_id = models.CharField(
+        max_length=100,
+        unique=True,
+        null=True,
+        blank=True,
+    )
     email       =   models.EmailField(max_length=100, unique=True)
     is_admin    =   models.BooleanField(default=False)
     first_name  =   models.CharField(max_length=100)

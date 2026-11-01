@@ -25,4 +25,6 @@ urlpatterns = [
     path("api/", include("apps.charts.urls")),
     path("api/", include("apps.payments.urls")),
     path("api/", include("apps.voucher.urls")),
+    path("api/", include("apps.member.urls")),
+    path("api/", include("apps.combination.urls")),
 ]
