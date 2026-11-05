@@ -16,6 +16,7 @@ from django.db import transaction
 from rest_framework.permissions import AllowAny
 
 from rest_framework.generics import RetrieveUpdateAPIView
+from apps.users.authentication import getCurrentVoucher
 import requests as http_requests
 
 class UserViewSet(ModelViewSet):
@@ -125,7 +126,7 @@ class GoogleLoginView(APIView):
                 "last_name": user.last_name,
                 "date_of_birth":user.date_of_birth,
                 "gender":user.gender,
-                "voucher":None
+                "voucher":getCurrentVoucher(user.id)
             },
         })
         

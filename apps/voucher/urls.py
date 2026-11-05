@@ -8,7 +8,7 @@ router.register("voucher", VoucherViewSet, basename="voucher")
 
 urlpatterns = router.urls + [
     path(
-        "voucher/check-voucher/",
+        "vouchers/check-voucher/",
         CheckVoucherIfValid.as_view(),
         name="check-voucher-valid"
     ),

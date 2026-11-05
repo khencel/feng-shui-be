@@ -26,7 +26,7 @@ class CheckVoucherIfValid(APIView):
         code = request.data.get('code')
         user_id = request.data.get('user')
 
-      
+
         if not code or not user_id:
             return Response(
                 {
